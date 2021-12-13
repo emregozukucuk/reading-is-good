@@ -1,0 +1,5 @@
+spring:
+  data:
+    mongodb:
+      database: ${MONGO_DB_NAME:readingisgood}
+      host: ${MONGO_DB_HOSTNAME:localhost}

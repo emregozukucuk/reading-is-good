@@ -1,0 +1,316 @@
+{
+	"info": {
+		"_postman_id": "6f8fa7d4-ba59-4e9a-a40d-a0ee19f34e16",
+		"name": "ReadingIsGood",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "createBook",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookName\":\"Sefiller\",\r\n    \"price\":\"40\",\r\n    \"stockCount\":\"3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/book/create"
+					},
+					"response": []
+				},
+				{
+					"name": "decreaseBookStockAmount",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "updateStockToDecreaseOrIncrease",
+								"value": "decrease",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\":\"61b7af8798def765d5807e2b\",\r\n    \"updatedStockCount\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/book/update-stock"
+					},
+					"response": []
+				},
+				{
+					"name": "increaseBookStockAmount",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "updateStockToDecreaseOrIncrease",
+								"value": "increase",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\":\"61b7af8798def765d5807e2b\",\r\n    \"updatedStockCount\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/book/update-stock"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test\",\r\n    \"surname\": \"test\",\r\n    \"email\": \"agit@test.com\",\r\n    \"password\": \"emre\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/customer/register"
+					},
+					"response": []
+				},
+				{
+					"name": "getCustomerOrders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/customer/get-orders/61b7af2f98def765d5807e2a?page=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"get-orders",
+								"61b7af2f98def765d5807e2a"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"emre\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "createOrder",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\":\"61b7af2f98def765d5807e2a\",\r\n    \"bookId\":\"61b7af8798def765d5807e2b\",\r\n    \"purchasedBookCount\":\"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/order/create"
+					},
+					"response": []
+				},
+				{
+					"name": "getOrder",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8080/api/v1/order/61b7afcb98def765d5807e2c"
+					},
+					"response": []
+				},
+				{
+					"name": "getOrderListByDateInterval",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startDate\":\"2021-12-12T13:17:32.360+00:00\",\r\n    \"endDate\":\"2021-12-12T14:18:58.901+00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/order/list-orders"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Statistic",
+			"item": [
+				{
+					"name": "statisticByCustomerIdDateInterval",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/statistic/monthly/61b5fb472c53123f46cf80a2"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
